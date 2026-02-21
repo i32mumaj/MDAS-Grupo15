@@ -159,8 +159,8 @@ public class Main {
         boolean globalPass = true;
 
         System.out.println("OUTPUT:");
-        System.out.println(String.format("%-25s | %-20s | %-20s | %-10s",
-                "DISH", "PRICE (Exp/Act)", "SIDE (Exp/Act)", "STATUS"));
+        System.out.printf("%-25s | %-20s | %-20s | %-10s%n",
+                "DISH", "PRICE (Exp/Act)", "SIDE (Exp/Act)", "STATUS");
         System.out.println("--------------------------|----------------------|----------------------|----------");
 
         int maxItems = Math.max(actualDishes.size(), expectedList.size());
@@ -202,8 +202,8 @@ public class Main {
                 globalPass = false;
             }
 
-            System.out.println(String.format("%-25s | %-20s | %-20s | %-10s",
-                    nameCol, priceCol, sideCol, status));
+            System.out.printf("%-25s | %-20s | %-20s | %-10s%n",
+                    nameCol, priceCol, sideCol, status);
         }
 
         double totalEsperado = 0;
