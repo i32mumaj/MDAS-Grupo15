@@ -13,6 +13,11 @@ public class Dish {
         this.side = side;
     }
 
+    public Dish(String name, DishType type){
+        this.name = name;
+        this.type = type;
+    }
+
     public String getName(){
         return this.name;
     }
