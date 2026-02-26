@@ -5,7 +5,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.FileNotFoundException;
 
 public class BasicFormatter {
     private File file;
@@ -29,7 +28,7 @@ public class BasicFormatter {
     public void appendText(String text) {
         try (FileWriter writer = new FileWriter(this.file, true)) {
             writer.write("\n" + text);
-            System.out.println("Text appended succesfully.");
+            System.out.println("Text appended successfully.");
         } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
@@ -42,9 +41,7 @@ public class BasicFormatter {
                 String line;
                 int counter = 1;
                 while ((line = br.readLine()) != null) {
-                    if(counter >= start && counter <= end){
-                        ret_v += line + "\n";
-                    }
+                    if(counter >= start && counter <= end)  ret_v = ret_v.concat(line + "\n");
                     counter++;
                 }
         } catch (IOException ex) {
