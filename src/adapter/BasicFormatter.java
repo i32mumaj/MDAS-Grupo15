@@ -31,7 +31,7 @@ public class BasicFormatter {
             System.out.println("Text appended successfully.");
         } catch (IOException e) {
             System.out.println("An error occurred.");
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
@@ -44,9 +44,37 @@ public class BasicFormatter {
                     if(counter >= start && counter <= end)  ret_v = ret_v.concat(line + "\n");
                     counter++;
                 }
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
         return ret_v;
+    }
+
+    public File[] splitFileInTwo(int cutLine) {
+        File part1 = new File(file.getParent(), "split1_" + file.getName());
+        File part2 = new File(file.getParent(), "split2_" + file.getName());
+
+        try (BufferedReader br = new BufferedReader(new FileReader(file));
+             FileWriter fw1 = new FileWriter(part1);
+             FileWriter fw2 = new FileWriter(part2)) {
+
+            String line;
+            int counter = 1;
+
+            while ((line = br.readLine()) != null) {
+                if (counter < cutLine) {
+                    fw1.write(line + "\n");
+                } else {
+                    fw2.write(line + "\n");
+                }
+                counter++;
+            }
+            System.out.println("File split in two successfully.");
+        } catch (IOException e) {
+            System.out.println("An error occurred while splitting the file.");
+            throw new RuntimeException(e);
+        }
+
+        return new File[]{part1, part2};
     }
 }
