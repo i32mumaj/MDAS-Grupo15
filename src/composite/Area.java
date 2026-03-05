@@ -22,8 +22,8 @@ public class Area implements Element{
         this.elements.add(element);
     }
 
-    public void removeElement(Element element){
-        this.elements.remove(element);
+    public boolean removeElement(Element element){
+        return this.elements.remove(element);
     }
 
     public List<Element> getElements() {
