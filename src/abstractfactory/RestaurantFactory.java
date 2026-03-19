@@ -6,13 +6,13 @@ public class RestaurantFactory extends AbstractFactory {
 
     @Override
 public Menu createWeeklyMenu(List<Dish> rawDishes, Side side) {
-    // 1. Validar que vengan exactamente 3 platos
+    // Validamos que vengan 3 platos
     if (rawDishes.size() != 3) {
         System.out.println("Error: El menú de restaurante debe tener 3 platos.");
-        // Opcionalmente lanzar una excepción: throw new IllegalArgumentException(...);
+        // lanzar una excepción: throw new IllegalArgumentException(...);
     }
     
-    // 2. Comprobar que haya uno de cada tipo (opcional para nota extra)
+    // 2. Comprobar que haya uno de cada tipo 
     boolean hasStarter = rawDishes.stream().anyMatch(d -> d.getType() == DishType.STARTER);
     boolean hasMain = rawDishes.stream().anyMatch(d -> d.getType() == DishType.MAIN_COURSE);
     boolean hasDessert = rawDishes.stream().anyMatch(d -> d.getType() == DishType.DESSERT);
