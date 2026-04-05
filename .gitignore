@@ -1,0 +1,4 @@
+.idea/
+out/
+src/resources/test_tmp/
+*.class
